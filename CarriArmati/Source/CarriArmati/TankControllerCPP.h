@@ -16,7 +16,23 @@ class CARRIARMATI_API ATankControllerCPP : public APlayerController
 	GENERATED_BODY()
 
 		virtual void BeginPlay() override;
+
 	    ATankCPP* GetTank();
 	
-	
+		virtual void Tick(float deltatime) override;
+
+		void Mira();
+
+		float MirinoX = 0.5;
+		float MirinoY = 0.32;
+
+		bool TrovaVista(FVector& loc);
+		bool TrovaDirezioneVista(FVector2D Mirino, FVector& DirezioneVista);
+		bool TrovaHitVista(FVector DirezioneVista, FVector&HitLocation);
+
+protected:
+
+	UPROPERTY(EditAnyWhere, Category = "SetUp")
+		float LineTraceRange = 1000000.f;
+
 };
